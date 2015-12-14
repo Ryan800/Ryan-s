@@ -13,4 +13,16 @@ id选择器 #setGreen <span id="setGreen"></span>
 !important:最高权值
 
 字体排版：body{font-family:"Microsoft Yahei";}
-font-size,color,font-weight:bold(粗体)，font-style:italic(斜体)，text-decoration:underline(下划线)
+font-size,color,font-weight:bold(粗体)，font-style:italic(斜体)，text-decoration:underline(下划线)，text-decoration:line-through(删除线)，text-indent:2em(缩进2个文字大小)，line-height:1.5em(1.5倍行距)，letter-spacing:20px(字母间距)，word-spacing:30px(单词间距)，text-align:center,right,left(块状元素对齐方式)
+
+常用的块状元素有：
+<div>、<p>、<h1>...<h6>、<ol>、<ul>、<dl>、<table>、<address>、<blockquote> 、<form>
+
+常用的内联元素有：
+<a>、<span>、<br>、<i>、<em>、<strong>、<label>、<q>、<var>、<cite>、<code>
+
+常用的内联块状元素有：
+<img>、<input>
+
+盒子模型
+边框：border-width,border-style(dashed虚线,dotted点线,solid实线),border-color padding内边距 margin外边距
