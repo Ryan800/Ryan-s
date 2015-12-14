@@ -25,4 +25,19 @@ font-size,color,font-weight:bold(粗体)，font-style:italic(斜体)，text-deco
 <img>、<input>
 
 盒子模型
-边框：border-width,border-style(dashed虚线,dotted点线,solid实线),border-color padding内边距 margin外边距
+边框：border-width,border-style(dashed虚线,dotted点线,solid实线),border-color padding内边距 margin外边距	
+简写：上右下左顺序 与android不太一样
+字体简写：至少指定font-size和font-family
+		font-size 与line-height之间加入“/” font:12px/1.5em
+
+css布局模型-
+流动模型（Flow）,
+浮动模型（Float）float:left(right)
+层模型（Flayer）
+	1、绝对定位(position: absolute) left,right,top,bottom
+	2、相对定位(position: relative) 相对于以前的位置移动
+	3、固定定位(position: fixed) 相对于浏览器视图
+
+	relative 与 absolute组合使用
+	1、参照定位的元素必须是相对定位元素的前辈元素：
+	2、参照定位的元素必须加入position:relative;
