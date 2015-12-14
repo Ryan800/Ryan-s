@@ -1,0 +1,11 @@
+<link href="style.css" rel="stylesheet" type="text/css" /> 
+类选择器 .setGreen <span class="setGreen"></span> 
+id选择器 #setGreen <span id="setGreen"></span>
+子选择器 .food>li{border:1px solid red;} 
+包含（后代）选择器 .first span{color:red;}
+>作用于元素的第一代后代，空格作用于元素的所有后代。
+通用选择器 * *{color:red;}
+伪选择器 a:hover{color:red;} 当鼠标划过时变红
+
+1、ID选择器只能在文档中使用一次。
+2、可以使用类选择器词列表方法为一个元素同时设置多个样式。
