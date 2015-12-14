@@ -9,3 +9,8 @@ id选择器 #setGreen <span id="setGreen"></span>
 
 1、ID选择器只能在文档中使用一次。
 2、可以使用类选择器词列表方法为一个元素同时设置多个样式。
+
+!important:最高权值
+
+字体排版：body{font-family:"Microsoft Yahei";}
+font-size,color,font-weight:bold(粗体)，font-style:italic(斜体)，text-decoration:underline(下划线)
