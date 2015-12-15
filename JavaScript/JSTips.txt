@@ -1,5 +1,8 @@
 1.NaN 与所有其他值都不想等，包括他自己 NaN === NaN; //false
 2.数组能放任意形式的元素a,[1, 4.23, false, "Hello"] b,new Array(1, 2, false, true)
+	length属性，
+	indexOf(),
+	slice()截取，不穿任何参数的话相当于复制array
 3.对象：键值组成的无序集合
 	var person = {
 		name:'Bob',
