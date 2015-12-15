@@ -1,0 +1,14 @@
+1.NaN 与所有其他值都不想等，包括他自己 NaN === NaN; //false
+2.数组能放任意形式的元素a,[1, 4.23, false, "Hello"] b,new Array(1, 2, false, true)
+3.对象：键值组成的无序集合
+	var person = {
+		name:'Bob',
+		age:20,
+		tags:['js', 'web', 'mobile'],
+		city:'Beijing',
+		hasCar:true,
+		zipcode:null
+	};
+4.启用strict模式的方法是在JavaScript代码的第一行写上：
+	'use strict'; //强制var声明，如果不用var声明，则会报错。
+5.indexOf(),substring()
