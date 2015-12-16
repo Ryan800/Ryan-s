@@ -2,9 +2,93 @@
 <html>
 <head>
 	<script type="text/javascript">
-		alert("Hello, world!");
-		i = 10;
+		// function foo(x) {
+		// 	alert(x);
+		// 	for (var i=0; i<arguments.length; i++) {
+		// 		alert(arguments[i]);
+		// 	}
+		// }
+		// foo(10, 20, 30);
 
-	</script>
+		// function abs(x) {
+		// 	if (typeof x !== "number") {
+		// 		throw 'Not a number';
+		// 	}
+		// 	if (x>=0) {
+		// 		return 0;
+		// 	} else {
+		// 		return -x;
+		// 	}
+		// }
+
+		// alert(abs("999");)
+
+		var xiaoming = {
+			name:'小明',
+			birth:1990,
+			age:function() {
+				var y = new Date().getFullYear();
+				return y-this.birth;
+			}
+		}
+
+		xiaoming.age;	//拿到函数体
+		xiaoming.age();	//得出小明的年龄
+
+
+		function getAge() {
+			var y = new Date().getFullYear;
+			return y - this.birth;
+		}
+
+		var xiaoming = {
+			name:'小明';
+			birth:1990;
+			age:getAge;
+		}
+
+		xiaoming.age();	//25
+		getAge.apply(xiaoming, []); 	//25,this只想xiaoming 参数为空
+
+
+		var count = 0;
+		var oldParseInt = parseInt;
+
+		window.parseInt = function() {
+			count += 1;
+			return oldParseInt.apply(null, arguments);	//调用原函数
+		};
+		//测试
+		parseInt('10');
+		parseInt('20');
+		parseInt('30');
+		count;
+
+
+		//高阶函数 Google mapReduce
+		//map A->A的映射
+		function pow(x) {
+			return x * x;
+		}
+		var arr = [1,2,3,4,5,6,7,8,9,10];
+		arr.map(pow);
+
+		//reduce A,B ->A的映射
+		var arr = [1,3,5,7,9];
+		arr.reduce(function(x, y) {
+			return x + y;
+		});
+//		要把[1, 3, 5, 7, 9]变换成整数13579
+		var arr = [1,3,5,7,9];
+		arr.reduce(function(x, y) {
+			return x*10 + y;
+		});
+
+		//请把用户输入的不规范的英文名字，变为首字母大写，其他小写的规范名字。输入：['adam', 'LISA', 'barT']，输出：['Adam', 'Lisa', 'Bart']。
+		function normalize(arr) {
+			return arr.map(function(s){
+				return s.substring(0,1).toUpperCase() + s.substring(1).toLowerCase();
+			});
+		}
 </head>
 </html>
