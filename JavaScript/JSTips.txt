@@ -3,6 +3,15 @@
 	length属性，
 	indexOf(),
 	slice()截取，不穿任何参数的话相当于复制array
+	push() 末尾添加元素
+	pop() 删除最后一个元素
+	unshift() 头部添加元素
+	shift() 删除第一个元素
+	sort() 排序
+	reverse() 反转
+	splice(2, 3, 'Google', 'Facebook') 从第二个元素开始，删除3个元素，并添加后面两个元素。
+	concat() 连接Array
+	join("-") 用指定字符串连接每个元素(用"-"连接)
 3.对象：键值组成的无序集合
 	var person = {
 		name:'Bob',
@@ -12,6 +21,19 @@
 		hasCar:true,
 		zipcode:null
 	};
+	delete person.name 删除某一属性
+	'Bob' in xiaoming; //true in 检测是否有某一属性（继承的也算）
+	hasOwnProperty() 自身拥有的 person.hasOwnProperty('Bob');
 4.启用strict模式的方法是在JavaScript代码的第一行写上：
 	'use strict'; //强制var声明，如果不用var声明，则会报错。
 5.indexOf(),substring()
+6.js把null,undefined,0,Nan,'' 视为false，其他一概视为true
+7.Map var map = new Map([["Michael", 34], ["Bob", 53], ["wang", 63]]);
+	map.set("bing", 93);
+	map.get("bing");
+	map.delete("bing");
+	key value 数据类型任意
+8.Set var set = new Set([3, 4, null, 'wang']);
+	set.add(4);
+	set.delete(null);
+9.iterable for ... of ...
