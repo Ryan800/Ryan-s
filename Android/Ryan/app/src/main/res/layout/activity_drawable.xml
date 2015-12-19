@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.ryan.wangbw.drawable.DrawableActivity">
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/alphaIv"
+               android:src="@drawable/ninepatch"
+        />
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/iv2"
+               android:background="@drawable/drawable_bitmap"
+        />
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+        android:orientation="vertical"
+                  android:background="@drawable/drawable_inset"
+                  android:visibility="gone"
+        >
+
+    </LinearLayout>
+
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:id="@+id/iv3"
+               android:src="@drawable/drawable_clip"
+        />
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+        android:orientation="horizontal"
+                  android:gravity="center_vertical"
+        >
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:id="@+id/iv4"
+                   android:src="@drawable/drawable_transition"
+                   android:layout_marginRight="20dp"
+            />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/playBtn"
+                android:text="play"
+            />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:id="@+id/playBtn2"
+                android:text="reverse"
+            />
+    </LinearLayout>
+
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:gravity="center"
+        >
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                   android:id="@+id/iv5"
+                   android:src="@drawable/drawable_animation_list"
+            />
+        <Button android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="animation start"
+                android:id="@+id/animationBtn"
+            />
+    </LinearLayout>
+
+
+</LinearLayout>

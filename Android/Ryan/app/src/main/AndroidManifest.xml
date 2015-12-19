@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest package="com.ryan.wangbw.myapplication"
+          xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name="com.ryan.wangbw.mvp2.app.App"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name="com.ryan.wangbw.widget.recyclerview.RecyclerViewActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.widget.recyclerview2.RecyclerViewDemoActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.base.BaseAty">
+        </activity>
+
+        <service
+            android:name="com.ryan.wangbw.service.MessengerService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
+        <activity android:name="com.ryan.wangbw.service.MessengerActivity">
+        </activity>
+
+        <service
+            android:name="com.ryan.wangbw.service.LocalService"
+            android:enabled="true"
+            android:exported="false">
+        </service>
+
+        <activity android:name="com.ryan.wangbw.service.BindingActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.bitmap.BitmapActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.widget.customView.CustomViewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.ryan.wangbw.rxjava.RxActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.retrofit.RetrofitActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.drawable.DrawableActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.drawable.AnimationActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.drawable.AnimatorActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.drawable.AnimationTestActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.retrofit.gitdemo.GitActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.mvp.UserLoginActivity">
+
+        </activity>
+        <activity android:name="com.ryan.wangbw.volley.VolleyActivity">
+
+        </activity>
+        <activity android:name="com.ryan.wangbw.mvp2.ui.common.BaseActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.mvp2.ui.activity.WeatherActivity">
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.ryan.wangbw.widget.customView.CustomViewActivity"
+    android:id="@+id/main_root_ll"
+    >
+    
+    <com.ryan.wangbw.widget.customView.CustomView
+        android:id="@+id/customView"
+        android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <com.ryan.wangbw.widget.customView.PorterDuffView android:layout_width="match_parent"
+                                                      android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <com.ryan.wangbw.widget.customView.DisInView android:layout_width="match_parent"
+                                                 android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <com.ryan.wangbw.widget.customView.EraserView android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    <com.ryan.wangbw.widget.customView.FontView android:layout_width="wrap_content"
+                                                android:layout_height="wrap_content"
+        android:visibility="gone"
+        />
+    <com.ryan.wangbw.widget.customView.MaskFilterView android:layout_width="match_parent"
+                                                      android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    <com.ryan.wangbw.widget.customView.BlurMaskFilterView android:layout_width="match_parent"
+                                                          android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+
+    <com.ryan.wangbw.widget.customView.PathEffectView android:layout_width="match_parent"
+                                                      android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    <com.ryan.wangbw.widget.customView.ECGView android:layout_width="match_parent"
+                                               android:layout_height="match_parent"
+        android:visibility="gone"
+        />
+    <com.ryan.wangbw.widget.customView.ShaderView android:layout_width="match_parent"
+                                                  android:layout_height="match_parent"
+        />
+    <com.ryan.wangbw.widget.customView.Shader2View android:layout_width="match_parent"
+                                                   android:layout_height="match_parent"
+        android:visibility="gone"/>
+
+</RelativeLayout>
