@@ -51,11 +51,6 @@
         <activity android:name="com.ryan.wangbw.bitmap.BitmapActivity">
         </activity>
         <activity android:name="com.ryan.wangbw.widget.customView.CustomViewActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
         <activity android:name="com.ryan.wangbw.rxjava.RxActivity">
         </activity>
@@ -72,14 +67,25 @@
         <activity android:name="com.ryan.wangbw.retrofit.gitdemo.GitActivity">
         </activity>
         <activity android:name="com.ryan.wangbw.mvp.UserLoginActivity">
-
         </activity>
         <activity android:name="com.ryan.wangbw.volley.VolleyActivity">
-
         </activity>
         <activity android:name="com.ryan.wangbw.mvp2.ui.common.BaseActivity">
         </activity>
         <activity android:name="com.ryan.wangbw.mvp2.ui.activity.WeatherActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.touchevent.TouchEventActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.databinding.MainDataActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.touchevent.TouchEventTestActivity">
+        </activity>
+        <activity android:name="com.ryan.wangbw.widget.hongyangcustomview.HongyangActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
     </application>
 
