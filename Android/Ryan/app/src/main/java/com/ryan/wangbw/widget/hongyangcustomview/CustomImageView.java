@@ -69,6 +69,9 @@ public class CustomImageView extends View {
 
     private void init() {
         mTextBound = new Rect();
+        mRect = new Rect();
+        mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+        mPaint.setTextSize(mTextSize);
         mPaint.getTextBounds(mTitle, 0, mTitle.length(), mTextBound);
     }
 
@@ -98,13 +101,11 @@ public class CustomImageView extends View {
         if (specMode == MeasureSpec.EXACTLY) {
             mHeight = specSize;
         } else {
-            int desireByImg = getPaddingTop() + getPaddingBottom() + mImage.getHeight();
-            int desireByTitle = getPaddingTop() + getPaddingBottom() + mTextBound.height();
-            int desiredHeight = Math.max(desireByImg, desireByTitle);
+           int desire = getPaddingTop() + getPaddingBottom() + mImage.getHeight() + mTextBound.height();
             if (specMode == MeasureSpec.AT_MOST) {  //此模式下，高度最大为spceSize,所以取两者最小值
-                mHeight = Math.min(desiredHeight, specSize);
+                mHeight = Math.min(desire, specSize);
             } else {
-                mHeight = Math.max(desiredHeight, specSize);
+                mHeight = Math.max(desire, specSize);
             }
         }
 
@@ -129,20 +130,30 @@ public class CustomImageView extends View {
         mPaint.setColor(mTextColor);
         mPaint.setStyle(Paint.Style.FILL);
 
+        /**
+         * 当前设置的宽度小于字体需要的宽度，将字体改为xxx...
+         */
         if (mTextBound.width() > mWidth) {
             TextPaint paint = new TextPaint(mPaint);
             String msg = TextUtils.ellipsize(mTitle, paint, (float) mWidth - getPaddingLeft() - getPaddingRight(),
                     TextUtils.TruncateAt.END).toString();
             canvas.drawText(msg, getPaddingLeft(), mHeight-getPaddingBottom(), mPaint);
         } else {
+            //正常情况，将字体居中
             canvas.drawText(mTitle, (mWidth-mTextBound.width())/2, mHeight-getPaddingBottom(), mPaint);
         }
 
+        //取消使用掉的块
 //        mRect.bottom -= mTextBound.height();
         if (mImageScale == IMAGE_SCALE_FITXY) {
             canvas.drawBitmap(mImage, null, mRect, mPaint);
         } else {
+            mRect.left = mWidth/2 - mImage.getWidth()/2;
+            mRect.right = mWidth/2 + mImage.getWidth()/2;
+            mRect.top = mHeight/2 - (mImage.getHeight()+mTextBound.height())/2;
+            mRect.bottom = mRect.top + mImage.getHeight();
 
+            canvas.drawBitmap(mImage, null, mRect, mPaint);
         }
     }
 }
