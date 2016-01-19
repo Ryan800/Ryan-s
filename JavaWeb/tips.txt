@@ -1,0 +1,39 @@
+1.软件开发三大方向：桌面应用程序，web应用程序，移动端嵌入式应用程序
+2.JSP三大指令元素 include,page,taglib
+3 page指令 language,import,contentType <%@ page %>
+	Jsp注释 html注释，jsp注释
+	Jsp脚本 <% %>
+	Jsp声明 在jsp页面定义变量或者方法
+		<%! Java代码%>
+	Jsp表达式 调用变量或者方法，不加分号
+		<% =表达式 %>
+	Jsp页面生命周期
+4.jsp内置对象（9大内置对象）
+	out
+		println() 向客户端打印字符串
+		clear()
+		clearBuffer()
+		flush()
+		int getBufferSize()
+		int getRemaining();
+		boolean isAutoFlush();
+		close();
+	request-HttpServletRequest
+	response-HttpServletResponse
+		请求重定向：客户端行为，response.sendRedirect() 等同于两次请求，前一次的请求对象不会保存，地址栏的URL地址会改变。
+		请求转发：服务器行为，request.getRequestDispatcher("转发地址").forward(req, resp);是一次请求，转发后请求对象会保存，地址栏的URL地址不会改变。
+	session-HttpSession
+		生命周期：创建，活动，销毁（session.invalidate(),超时，服务器重启）
+	application
+		服务器的启动和关闭决定了application对象的生命
+		数据共享，可存放全局变量
+		ServletContext的实例
+	page
+		Object的一个实例
+	pageContext
+		页面中所有功能的集大成者
+	config
+		servlet初始化时，jsp引擎向他传递信息用的。
+	exception
+		异常对象。
+
