@@ -29,4 +29,12 @@ public class LowerCaseInputStream extends FilterInputStream {
         int c = super.read();
         return (c == -1 ? c : Character.toLowerCase((char) c));
     }
+
+    public int read(byte[] b, int offset, int len) throws IOException {
+        int result = super.read(b, offset, len);
+        for (int i=offset; i<result+offset; i++) {
+            b[i] = (byte) Character.toLowerCase((char) b[i]);
+        }
+        return result;
+    }
 }

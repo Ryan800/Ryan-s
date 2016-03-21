@@ -1,0 +1,80 @@
+/*
+	这是一段注释。
+*/
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title>iRock = The Virtual Pet Rock</title>
+		<script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript">
+			var userName;
+			function greetUser() {
+				alert("Hello, I am your pet rock.");
+			}
+			function touchRock() {
+				if (userName) {
+					alert('I like the attention,' + userName + ".Thank you.");
+				} else {
+					userName =  prompt("What is your name?", "Enter your name here.");
+					if (userName) {
+						alert('It is good to meet you, '+ userName + ".");
+					}
+				}
+				document.getElementById("rockImg").src = "img/rock_happy.png";
+				setTimeout("document.getElementById('rockImg').src = 'img/rock.png';", 5 * 60 * 1000);
+			}
+			function getSize() {
+				var height = document.getElementById('rockImg').style.height;
+				alert("src height:"+height);
+			}
+			function resizeRock() {
+				document.getElementById('rockImg').style.height = (document.body.clientHeight-100)*0.9;
+			}
+
+			document.getElementById("rockImg").onclick = function(evt) {
+				getSize();
+			}
+
+			function aler() {
+				alert("I'm a alert dialog!");
+			}
+
+			window.onload = function() {
+				document.getElementById("rockImg").onclick = aler;
+			}
+			function validateNonEmpty(inputField, helpText) {
+				if (inputField.value.length == 0) {
+					if (helpText!=null) {
+						helpText.innerHTML = "Please enter a value.";
+					}
+					return false;
+				} else if (isNaN(inputField.value)) {
+					if (helpText != null) {
+						helpText.innerHTML = "Please enter a number.";
+					}
+					return false;
+				} else {
+					if (helpText != null) {
+						helpText.innerHTML = "";
+					}
+					return true;
+				}
+			}
+
+			function placeOrder(form) {
+				if (validateNonEmpty(1, 32, form["message"], form["message_help"])
+			}
+		</script>
+	</head>
+	<body onload="resizeRock();greetUser();" onresize="resizeRock();">
+		<div style="margin-top:100px; text-align:center">
+			<img id="rockImg" src="img/rock.png" alt="iRock" style="cursor:pointer" onclick="touchRock();getSize();" />
+		</div>
+		lslkslafskdjdl
+		<div>
+			<input id="phone" name="phone" type="text" size="12" onblur="validateNonEmpty(this, document.getElementById('phone_help'));" />
+			<span id="phone_help" class="help"></span>
+		</div>
+		<input type="button" value="Order Banner" onclick="placeOrder(this.form)" />
+	</body>
+</html>

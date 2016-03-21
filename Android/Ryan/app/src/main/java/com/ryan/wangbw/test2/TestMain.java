@@ -13,12 +13,16 @@ public class TestMain {
 //        System.out.println(str1);
 //        String str2 = str.substring(2, 11);
 //        System.out.println(str2);
+//
+//        int a = 4;
+//        int b = 5;
+//        int c = a + b;
+//        System.out.println(c);
+//        a = 6;
+//        System.out.println(c);
 
-        int a = 4;
-        int b = 5;
-        int c = a + b;
-        System.out.println(c);
-        a = 6;
-        System.out.println(c);
+        Father father = new Son();
+        father.hehe();
+
     }
 }

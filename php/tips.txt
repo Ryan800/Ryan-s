@@ -1,0 +1,50 @@
+1.静态方法中用self parent static在内部调用静态方法和属性。
+普通方法中用this
+2.用__call 实现重载
+3.双引号可以包含字串变量，单引号则认为是普通字符。
+4.字符串  长度：strlen mb_strlen(中文字符)
+		  截取：substr("ssss", 2, 4) 从第二位开始，截取四个字符 mb_strlen()中文字符截取
+		  查找字符串 strpos()
+		  替换字符串 str_replace(old, new, str);
+		  格式化 sprintf("%01.2f", str)
+		  合并（数组元素组合成字符串）implode(分隔符，array);
+		  分割 array = explode(分隔符，str)
+		  字符串转义 addslashes() what's your ->what\'s your 用处！！！
+5.正则表达式
+	preg_match($p, $str) $p = "/apple/" $str = "apple banana";
+	分隔符后面可以使用模式修饰符：i,m,s,x等 $p = "/apple/i";
+	i:忽略大小写
+6.文件操作
+	$filename = './test.txt';
+	$data = 'wangbingwen';
+	file_get_contents($filename);
+	file_exists($filename) 判断文件或者目录是否存在
+	is_file() 判断给定路径是否是一个文件
+	is_readable() is_writeable()
+	file_put_contents($filename, $data);
+	fileowner,filectime创建时间, filemtime修改时间, fileatime访问时间
+	filesize($filename) 文件大小，字节为单位。
+	unlink($filename) 删除文件
+	rmdir($dir) 删除文件夹
+7.时间
+	unix时间time() 单位s
+	date('Y-m-d');	当前时间的unix时间戳
+	date('Y-m-d', '1396193923');	指定时间戳的格式化时间
+	strtotime('2014-05-01');	指定格式化时间的时间戳
+	gmdate()格林威治时间 gmdate('Y-m-d h:i:s', strtotime("2014-12-12"));
+8.数据库
+	$link = mysql_connect($host, $user, $pwd);
+	mysql_select_db($db);	//选择数据库
+	mysql_query("set names 'utf8'");	//设置编码
+	//查询
+	$res = mysql_query('select * from user limit 1', $link);
+	$row = mysql_fetch_array($res);	//可以指定索引或者字段名或者两者 MYSQL_ASSOC, MYSQL_NUM, MYSQL_BOTH 
+	mysql_fetch_assoc();	//字段名 "name", "id"
+	mysql_fetch_row();	//索引1,2
+	//插入
+	$sql = "insert into user(id, name, age) values(4, 'ryan', 19)";
+	mysql_query($sql);
+	mysql_close();	//关闭数据库连接
+
+
+
