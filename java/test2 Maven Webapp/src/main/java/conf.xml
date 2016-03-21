@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<properties resource="properties/db.properties" />
+	<typeAliases>
+		<typeAlias alias="User" type="me.gacl.domain.User"/>
+	</typeAliases>
+	
+	<!-- 为me.gacl.domain包下的所有实体类配置别名，MyBatis默认的设置别名的方式就是去除类所在的包后的简单的类名
+        比如me.gacl.domain.User这个实体类的别名就会被设置成User
+         -->
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC">
+			</transactionManager>
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+                <property name="url" value="${url}" />
+                <property name="username" value="${name}" />
+                <property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="mappings/userMapper.xml"/>
+		<mapper class="me.gacl.mapping.UserMapperI"/>
+		<mapper resource="mappings/orderMapper.xml"/>
+		<mapper resource="mappings/classMapper.xml"/>
+	</mappers>
+	
+	
+</configuration>
