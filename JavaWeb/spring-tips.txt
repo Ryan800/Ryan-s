@@ -1,0 +1,13 @@
+--AOP
+	通知
+		1）前置通知 <aop:before>
+		2）后置返回通知 <aop:after-returning>
+		3）后置异常通知 <aop:after-throwing>
+				<aop:after-throwing pointcut="切入点表达式" pointcut-ref="切入点Bean引用"
+				method="后置异常通知实现方法名"
+				arg-names="后置异常通知实现方法参数列表参数名字"
+				throwing="将抛出的异常赋值给的通知实现方法参数名"/>
+		4）后置最终通知 <aop:after >
+		5）环绕通知 <aop:around > 很吊的功能，可以替换参数值。
+	引入 <aop:declare-parent>
+	Advisor <aop:advisor>
