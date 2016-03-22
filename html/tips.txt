@@ -1,4 +1,26 @@
-<link href="style.css" rel="stylesheet" type="text/css" /> 
+css属性
+	color
+	font-weight:文本粗细 lighter,light,normal,bold,bolder
+	line-height:行间距 em,px,% 如果不写单位，那么行间距为自身高度的倍数。
+	letter-spacing:字间距
+	background-color:元素背景颜色
+	border:元素周围加边框
+	font-size:文字大小
+	text-align:左对齐，右对齐或居中
+	left，top:控制元素左边，顶部的位置
+	font-style:斜体文本 italic,oblique(都是斜体)
+	list-style:设置表项的样式
+	background-image:元素的图片背景
+	background-position:背景的位置
+	background-repeat:背景是否重复
+	text-align:作用于块元素，位置。
+	text-decoration:文本样式 none,underline,overline,line-through
+	border-collapse:消除边框间距 collapse
+	list-style-type:列表小点样式 disc,circle,square,none
+	list-style-image:用图片作为列表的标志。url(images/xxx.jpg)
+
+<link>元素用来引入外部样式表
+	<link href="style.css" rel="stylesheet" type="text/css" /> 
 类选择器 .setGreen <span class="setGreen"></span> 
 id选择器 #setGreen <span id="setGreen"></span>
 子选择器 .food>li{border:1px solid red;} 
@@ -27,12 +49,15 @@ font-size,color,font-weight:bold(粗体)，font-style:italic(斜体)，text-deco
 盒子模型
 边框：border-width,border-style(dashed虚线,dotted点线,solid实线),border-color padding内边距 margin外边距	
 简写：上右下左顺序 与android不太一样
-字体简写：至少指定font-size和font-family
-		font-size 与line-height之间加入“/” font:12px/1.5em
+字体简写：font-style font-variant font-weight font-size/line-height font-family
+	至少指定font-size和font-family
+	font-size 与line-height之间加入“/” font:12px/1.5em
+	前三个可选，但是必须在前天属性之前声明。
 
 css布局模型-
 流动模型（Flow）,
 浮动模型（Float）float:left(right)
+	clear:使元素流入页面时，不允许飘逸元素出现在这个元素的周围。
 层模型（Flayer）
 	1、绝对定位(position: absolute) left,right,top,bottom
 	2、相对定位(position: relative) 相对于以前的位置移动
@@ -51,3 +76,22 @@ css布局模型-
 	通过给父元素设置 float:left，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left:-50% 来实现水平居中。
 
 垂直居中：父元素高度确定的单行文本，设置父元素的height和line-height高度一致来实现。
+
+form表单
+	1.属性
+		action 请求的服务器地址
+		method 请求方式 get post
+	2.元素
+		input type:text/submit/radio/checkbox
+		textarea 可输入多行文本的文本框 rows 高度 cols 宽度
+		select 菜单选项option
+		label 标签 for？？
+		fieldset 组合表单元素 legend连用
+
+HeadFirst 总结
+	p417 字体颜色样式
+	p462 盒模式
+	p520 div和span
+	p580 布局和排版
+	p619 网格和列表
+	p672 表单

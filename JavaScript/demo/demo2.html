@@ -5,7 +5,27 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
 		<title>iRock = The Virtual Pet Rock</title>
-		<script type="text/javascript" src="cookie.js"></script>
+		<style type="text/css">
+			span.decision {
+				font-weight: bold;
+				border: thin solid #000000;
+				padding: 5px;
+				background-color: #FFFFFF;
+			}
+			span.decisioninverse {
+				font-weight: bold;
+				color: #FFFFFF;
+				border: thin solid #DDDDDD;
+				padding: 5px;
+				background-color: #000000;
+			}
+			span.decisionhover {
+				font-weight: bold;
+				border: thin solid #000000;
+				padding: 5px;
+				background-color: #EEEEEE;
+			}
+		</style>		
 		<script type="text/javascript">
 			var userName;
 			function greetUser() {
@@ -64,17 +84,67 @@
 			function placeOrder(form) {
 				if (validateNonEmpty(1, 32, form["message"], form["message_help"])
 			}
+
+			function validateRegEx(regex, inputStr, helpText, helpMessage) {
+				if (!regex.test(inputStr)) {
+					if (helpText != null) {
+						helpText.innerHTML = helpMessage;
+					}
+					return false;
+				} else {
+					if (helpText != null) {
+						helpText.innerHTML = "";
+					}
+					return true;
+				}
+			}
+
+			function validateDate(inputField, helpText) {
+				if (!validateNonEmpty(inputField, helpText)) {
+					return false;
+				}
+				return validateRegEx(/^\d{2}\/\d{2}\/\d{4}$/, inputField.value, helpText, "Please enter a date(for example, 01/14/1975).");
+			}
+
+			function getDivs() {
+				var divs = document.getElementsByTagName("div"); //返回数组
+			}
+
+			function alertNodeValue() {
+				// alert("sdfd");
+				document.getElementById("story").firstChild.nodeValue = "wangbingwen";
+			}
+
+			function replaceNodeText(id, newText) {
+				var node = document.getElementById(id);
+				while(node.firstChild) {
+					node.removeChild(node.firstChild);
+				}
+				node.appendChild(document.createTextNode(newText));
+			}
+
+			function changeScene(type) {
+				if (type == 1) {
+					document.getElementById("decision1").className = "decisioninverse";
+					document.getElementById("decision2").style.visibility = "visible";
+				}
+			}
 		</script>
 	</head>
 	<body onload="resizeRock();greetUser();" onresize="resizeRock();">
 		<div style="margin-top:100px; text-align:center">
 			<img id="rockImg" src="img/rock.png" alt="iRock" style="cursor:pointer" onclick="touchRock();getSize();" />
 		</div>
-		lslkslafskdjdl
+		<p id="story">
+			You are <strong>not</strong> alone.
+		</p>
+
 		<div>
 			<input id="phone" name="phone" type="text" size="12" onblur="validateNonEmpty(this, document.getElementById('phone_help'));" />
 			<span id="phone_help" class="help"></span>
 		</div>
-		<input type="button" value="Order Banner" onclick="placeOrder(this.form)" />
+		<input type="button" value="Alert NodeValue" onclick="alertNodeValue();" /> <br>
+		<span id="decision1" class="decision" onclick="changeScene(1)" style="cursor:pointer" onmousehover="this.className='decisionhover'" onmouseout="this.className='decision'">Start Game</span>
+		<span id="decision2" class="decision" onclick="changeScene(2)" style="visibility:hidden"></span>
 	</body>
 </html>

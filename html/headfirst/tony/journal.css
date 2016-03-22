@@ -1,0 +1,62 @@
+body {
+	font-family: Verdana, Geneva, Arial, sans-serif;
+	font-size: small;
+}
+
+h1, h2 {
+	font-weight: normal;
+	color: #cc6600;
+	border-bottom: thin dotted #888888;
+}
+
+h1 {
+	font-size: 170%;
+}
+
+h2 {
+	font-size: 130%;
+}
+
+blockquote {
+	font-style: italic;
+}
+
+table {
+	margin-left: 20px;
+	margin-right: 20px;
+	border: thin solid black;
+	caption-side: bottom;
+	border-spacing: 10px 30px;
+	border-collapse: collapse;
+}
+
+td, th {
+	border: thin dotted gray;
+	padding: 5px;
+}
+
+th {
+	background: #cc6600;
+}
+
+caption {
+	font-style: italic;
+	padding-top: 8px;
+}
+
+.center-aligned {
+	text-align: center;
+}
+
+.right-aligned {
+	text-align: right;
+}
+
+table table th {
+	background: white;
+}
+
+li {
+	list-style-type: circle;
+	list-style-position: outside;
+}

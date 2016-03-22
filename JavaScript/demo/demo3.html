@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+		<title></title>
+		<script type="text/javascript">
+			var b = null;
+			function aler() {
+				var date = new Date();
+				// alert("I'm Ryan."+date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate());
+				b = new Blog("wang", new Date());
+				// alert(b.signature+b.toHTML());
+				alert(b.signature.scramble());
+			}
+
+			function aler2() {
+				aler();
+				alert(b.signature);
+			}
+			String.prototype.scramble = function() {
+				return "wwwww";
+			}
+			function Blog(body, date) {
+				this.body = body;
+				this.date = date;
+
+				this.toHTML = function(highlight) {
+					var blogHTML = "";
+					blogHTML += highlight ? "<p style=background-color:#EEEEEE>":"<p>";
+					blogHTML = "<strong>"+(this.date.getMonth()+1)+"/"+
+					this.date.getDate()+"/"+this.date.getFullYear()+"</strong> <br />"+this.body+"<br /><em>"+this.signature+"</em>"+"</p>";
+					return blogHTML;
+				}
+			}
+
+			Blog.prototype.signature = "Puzzler Ruby";
+			Blog.prototype.containsText = function(text) {
+				return (this.body.toLowerCase().indexOf(text.toLowerCase())!=-1);
+			}
+
+			//Ajax XMLHttpRequest
+			var request = null;
+			if (window.XMLHttpRequest) {
+				request = new XMLHttpRequest();
+			} else if(window.ActiveXObject){
+				request = new ActiveXObject("Msxml2.XMLHTTP");
+			}
+			request.onreadystatechagne = handler;
+			request.open(type, url, true);
+			request.send(null);
+
+			request.open("POST", "addblogentry.php", true);
+			request.setrequestHeader("Content-Type", "application/x-www-form-urlencoded; charset=utf-8");
+			request.send("09/26/2008&These dreams just ...&cubeapart.png");
+
+			//Ajax AjaxRequest
+			var ajaxReq = new AjaxRequest();
+			ajaxReq.send("GET", "blog.xml", handleRequest);
+
+			function getText(elem) {
+				var text = "";
+				if (elem) {
+					if (elem.childNodes) {
+						var child = elem.childNodes[i];
+						if (child.nodeValue) {
+							text += child.nodeValue;
+						} else {
+							if (child.childNodes) {
+								if (child.childNodes[0].nodeValue) {
+									text += child.childNodes[0].nodeValue;
+								}
+							}
+						}
+					}
+				}
+				return text;
+			}
+
+			function handleRequest() {
+				if (ajaxReq.getReadyState() == 4 && ajaxReq.getStatus() == 200) {
+					// Store the XML response data
+					var xmlData = ajaxReq.getResponseXML().getElementByTagName("blog")[0];
+					Blog.prototype.signature = "by " + getText(xmlData.getElementByTagName("author")[0]);
+
+					var entries = xmlData.getElementByTagName("entry");
+					for (var i=0; i<entries.length; i++) {
+						blog.push(new Blog(getText(entries[i].getElementByTagName("body")[0], new Date(getText(entries[i].getElementByTagName("date")[0])),getText(entries[i].getElementByTagName("image")[])));
+					}
+					showBlog(5);
+				}
+			}
+
+			function loadBlog() {
+				document.getElementById("blog").innerHTML = "img src='wait.gif' alt='loading...' />";
+				ajaxReq.send("GET", "blog.xml", handleRequest);
+			}
+		</script>
+		<style type="text/css">
+
+		</style>
+	</head>	
+	<body>
+		<span id="click" onclick="aler2();" style="cursor:pointer" disabled="disabled">Click me!</span>
+	</body>
+</html>

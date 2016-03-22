@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" 
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<title>The Starbuzz Bean Machine</title>
+		
+		<link type="text/css" rel="stylesheet" href="journal.css" media="screen"></link>
+	</head>
+	<body>
+		
+		<h1>The StarBuzz Bean Machine</h1>
+		<h2>Fill out the form below and click submit to order</h2>
+
+		<form action="http://www.baidu.com" method="POST">
+
+			<p>
+				Ship to:<br />
+				Name:<input type="text" name="name" /><br />
+				Address:<input type="text" name="address" /><br />
+				City:<input type="text" name="city" /><br />
+				State:<input type="text" name="state" /><br />
+				Zip:<input type="text" name="zip" /><br />
+			</p>
+			<p>
+				<input type="submit" name="submit" value="提交" />
+			</p>
+		</form>
+
+		<form action="http://www.baidu.com" method="POST">
+			<p>
+				Choose your beans:
+				<select name="beans" multiple="multiple">
+					<option value="House Blend">House Blend</option>
+					<option value="Bolivia">Bolivia</option>
+					<option value="Guatemala">Guatemala</option>
+					<option value="Kenya">Kenya</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" value="submit" />
+			</p>
+		</form>
+
+		<form action="http://www.sina.com" method="POST">
+			<p>
+				Type:<br />
+				<input type="radio" name="beantype" value="whole" /> Whole bean <br />
+				<input type="radio" name="beantype" value="ground" checked="checked" /> Ground
+			</p>
+		</form>
+
+		<form action="http://www.netease.com" method="GET">
+			<p>
+				Extras:<br />
+				<input type="checkbox" name="extras[]" value="giftwrap" /> Gift wrap <br />
+				<input type="checkbox" name="extras[]" value="catalog" checked="checked" /> Include catalog with order
+			</p>
+		</form>
+
+		<p>
+			Customer Comments: <br />
+			<textarea name="comments" rows="10" cols="48"></textarea>
+		</p>
+
+		<fieldset>
+			<legend>Condiments</legend>
+			<input type="checkbox" name="spice" value="salt" /> Salt <br />
+			<input type="checkbox" name="spice" value="pepper" /> Pepper <br />
+			<input type="checkbox" name="spice" value="garlic" /> Garlic <br />
+		</fieldset>
+
+		<fieldset>
+			<legend>Condiments</legend>
+			<input type="checkbox" name="spice" value="salt" id="salt" /> <label for="salt">salt</label>
+			<input type="checkbox" name="spice" value="pepper" /><label for="pepper">pepper</label>
+			<input type="checkbox" name="spice" value="garlic" /> <label for="garlic">garlic</label>
+		</fieldset>
+
+		<p>
+			<input type="file" name="doc" />
+		</p>
+	</body>
+</html>

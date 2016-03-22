@@ -88,6 +88,7 @@ document
 		clientHeight
 
 正则表达式
+	需以斜线围起，/xxxx/
 	元字符
 		. 匹配任何字符，换行符除外
 		\s 匹配空格（空白字符space,tab，换行符，return/enter）
@@ -95,11 +96,29 @@ document
 		^ 匹配模式的字符串前不能有其他文字
 		\w 匹配任何字母数字字符
 		$ 字符串需以模式结束
-		/^/d/d/d/d/d-/d/d/d/d$/ #####-####美国邮政编码正则
+		| 选替  /^\d{2}\/\d{2}\/(\d{2}|\d{4})$/ 年份2位或4位
+		/^\d\d\d\d\d-\d\d\d\d$/ #####-####美国邮政编码正则
 	限定符
 		* 限定符前的子模式必须出现0或多次
 		{n} 限定符前的子模式必须出现恰好n次
+		{m,n} 限定符前的子模式必须出现至少m次，但不可多余n次
 		+ 限定符前的子模式必须出现1或多次
 		? 限定符前的子模式必须出现0或1次
 		() 集合字符或/和元字符，成为子模式
-		/^/d{5}-/d{4}$/
+		/^\d{5}-\d{4}$/
+	用法
+		var regex = /^/d{5}$/;
+		if (!regex.test("slss")) {
+			//todo
+		}
+Ajax
+	XMLHttpRequest
+		readyState 0未初始 1开启 2已传送 3接收中 4已载入
+		status 404找不到文件 200 OK
+		onreadystatechange 请求状态改变时会被调用的函数引用
+		responseText 
+		responseXML
+		abort() 取消请求
+		open() 准备请求，置顶请求的类型，URL及其他细节
+		send() 传送请求，交给服务器处理
+	AjaxRequest

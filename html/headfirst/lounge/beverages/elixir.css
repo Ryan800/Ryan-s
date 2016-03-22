@@ -1,0 +1,25 @@
+#greentea {
+	float: left;
+	width: 150px;
+	background: green;
+}
+
+#raspherry {
+	margin: 0px 150px 0px 150px;
+	background: blue;
+}
+
+#blackbrain {
+	float: right;
+	width: 150px;
+	background: red;
+}
+
+#footer {
+	background: #880033;
+	clear: both;
+	text-align: center;
+	padding: 5px;
+	color: white;
+	font-size: 50%;
+}

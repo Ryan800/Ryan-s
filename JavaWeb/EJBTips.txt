@@ -1,0 +1,6 @@
+1.bean三种类型
+	实体bean(entity bean) 一个实例就是数据库表中的一行
+	消息驱动bean(message-driven bean) 监听来自JMS消息服务的消息
+	会话bean(session bean) 各种后端服务都可以用会话bean来实现
+
+	！实体bean是一个东西，会话bean会做一些事情。
