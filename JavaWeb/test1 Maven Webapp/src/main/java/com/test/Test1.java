@@ -3,6 +3,6 @@ package com.test;
 public class Test1 {
 	public static void main(String[] args) {
 //		System.out.println(TestClass.TC);
-		System.out.println("ÄãºÃ");
+		System.out.println(Runtime.getRuntime().availableProcessors());
 	}
 }

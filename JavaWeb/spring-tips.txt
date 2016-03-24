@@ -11,3 +11,11 @@
 		5）环绕通知 <aop:around > 很吊的功能，可以替换参数值。
 	引入 <aop:declare-parent>
 	Advisor <aop:advisor>
+--注入
+	方法注入
+	 (1)基于xml配置
+		查找方法注入--Lookup方法注入，用于注入方法返回结果。 <lookup-method name="方法名" bean="返回bean" />
+		方法替换注入 --MethodReplacer，用来替换方法体。 <replaced-method name="方法名" replacer="replacer实现">
+																											<arg-type>参数类型</arg-type>
+																									</replaced-method>
+		(2)基于注解
