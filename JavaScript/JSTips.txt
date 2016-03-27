@@ -37,7 +37,7 @@
 	set.add(4);
 	set.delete(null);
 9.iterable for ... of ...
-10.函数 function 
+10.函数 function
 	arguments
 	rest
 	js不支持块级作用域，只支持函数作用域，let，const使其支持块级作用域。
@@ -113,10 +113,11 @@ document
 		}
 Ajax
 	XMLHttpRequest
+		readyState
 		readyState 0未初始 1开启 2已传送 3接收中 4已载入
 		status 404找不到文件 200 OK
 		onreadystatechange 请求状态改变时会被调用的函数引用
-		responseText 
+		responseText
 		responseXML
 		abort() 取消请求
 		open() 准备请求，置顶请求的类型，URL及其他细节
