@@ -16,6 +16,33 @@
 	 (1)基于xml配置
 		查找方法注入--Lookup方法注入，用于注入方法返回结果。 <lookup-method name="方法名" bean="返回bean" />
 		方法替换注入 --MethodReplacer，用来替换方法体。 <replaced-method name="方法名" replacer="replacer实现">
+
+
+spring-mvc
+注解式控制器Controller
+入门：
+xxx-servlet.xml
+1.HandlerMapping HandlerAdapter配置
+	RequestMappingHanderMapping RequestMappingHandlerAdapter
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>
+	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
+2.视图解析器配置
+	InternalResourceViewResolver
+3.处理器配置
+	HelloWorldController
+	<bean class="cn.javass.chapter6.web.controller.HelloWorldController"/>
+
+@Controller @RequestMapping("/user")
+
+6.5 请求映射
+	1.普通URL路径映射
+	@RequestMapping(value={"/test1", "/user/create"}) 多个url路径可以映射到一个处理器
+	2.URI模板模式映射
+	@RequestMapping(value="/users/{userId}")：{×××}占位符， 请求的URL可以是 “/users/123456”
+	3.Ant风格
+	@RequestMapping(value="/users/**")：可以匹配“/users/abc/abc”，但“/users/123”将会被【URI模板模式映射中的“/users/{userId}”模式优先映射到】
+	4.正则表达式风格
+	@RequestMapping(value="/products/{categoryCode:\\d+}-{pageNumber:\\d+}")：可以匹配“/products/123-1”，但不能匹配“/products/abc-1”，这样可以设计更加严格的规则。
 																											<arg-type>参数类型</arg-type>
 																									</replaced-method>
 		(2)基于注解
