@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- HandlerMapping -->
+	<!-- BeanNameUrlHandlerMapping：表示将请求的URL和Bean名字映射，如URL为 “上下文/hello”，则Spring配置文件必须有一个名字为“/hello”的Bean，上下文默认忽略。 -->
+	<bean
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+	<!-- HandlerAdapter -->
+	<!-- SimpleControllerHandlerAdapter：表示所有实现了org.springframework.web.servlet.mvc.Controller接口的Bean可以作为Spring 
+		Web MVC中的处理器。如果需要其他类型的处理器可以通过实现HadlerAdapter来解决。 -->
+	<bean
+		class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+	<!-- ViewResolver -->
+	<!-- InternalResourceViewResolver：用于支持Servlet、JSP视图解析； -->
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView"></property>
+		<property name="prefix" value="/WEB-INF/jsp/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+
+	<!-- <bean name="/hello" class="cn.javass.chapter2.web.controller.HelloWorldController"></bean> -->
+
+	<bean name="/hello"
+		class="cn.javass.chapter4.web.controller.HelloWorldController" />
+	<bean name="/helloWithoutMv"
+		class="cn.javass.chapter4.web.controller.HelloWorldWithoutReturnModelAndViewController"></bean>
+
+	<!-- 以上配置表示只支持POST请求，如果是GET请求客户端将收到“HTTP Status 405 - Request method 'GET' 
+		not supported”。 -->
+	<bean name="/helloWithPOST"
+		class="cn.javass.chapter4.web.controller.HelloWorldController">
+		<property name="supportedMethods" value="POST"></property>
+	</bean>
+
+	<!-- 在chapter4-servlet.xml配置处理器 -->
+	<bean name="/helloRequireSession"
+		class="cn.javass.chapter4.web.controller.HelloWorldController">
+		<property name="requireSession" value="true" />
+	</bean>
+
+	<!-- 客户端端缓存控制 -->
+	<bean name="/helloCache"
+		class="cn.javass.chapter4.web.controller.HelloWorldCacheController">
+		<property name="cacheSeconds" value="5" />
+	</bean>
+	<bean name="/helloNoCache"
+		class="cn.javass.chapter4.web.controller.HelloWorldCacheController">
+		<property name="cacheSeconds" value="0"></property>
+	</bean>
+	<bean name="/helloLastModified"
+		class="cn.javass.chapter4.web.controller.HelloWorldLastModifiedCacheController"></bean>
+	<!-- </bean> <bean name="/helloCache" class="cn.javass.chapter4.web.controller.HelloWorldCacheController"> 
+		<property name="cacheSeconds" value="5" /> </bean> -->
+
+	<bean name="/forwardToServlet" class="org.springframework.web.servlet.mvc.ServletForwardingController">
+		<property name="servletName" value="forwarding"></property>
+	</bean>
+</beans>
+
