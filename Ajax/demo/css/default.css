@@ -1,0 +1,12 @@
+body {
+  background: #333;
+  font-family: Trebuchet MS, Verdana, Helvetica, Arial, sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+#wrapper {
+  background: #750505 url('../images/bgWrapper.png') 8px 0 no-repeat;
+  border: solid #300;
+  margin: 0 auto;
+}
