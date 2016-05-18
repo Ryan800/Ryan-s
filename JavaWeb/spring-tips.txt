@@ -28,6 +28,12 @@ xxx-servlet.xml
 	<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 2.视图解析器配置
 	InternalResourceViewResolver
+	<bean 
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass" value="org.springframework.web.servlet.view.jstlView"></property>
+		<property name="prefix" value="/WEB-INF/jsp/" ></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
 3.处理器配置
 	HelloWorldController
 	<bean class="cn.javass.chapter6.web.controller.HelloWorldController"/>
@@ -35,14 +41,73 @@ xxx-servlet.xml
 @Controller @RequestMapping("/user")
 
 6.5 请求映射
-	1.普通URL路径映射
-	@RequestMapping(value={"/test1", "/user/create"}) 多个url路径可以映射到一个处理器
-	2.URI模板模式映射
-	@RequestMapping(value="/users/{userId}")：{×××}占位符， 请求的URL可以是 “/users/123456”
-	3.Ant风格
-	@RequestMapping(value="/users/**")：可以匹配“/users/abc/abc”，但“/users/123”将会被【URI模板模式映射中的“/users/{userId}”模式优先映射到】
-	4.正则表达式风格
-	@RequestMapping(value="/products/{categoryCode:\\d+}-{pageNumber:\\d+}")：可以匹配“/products/123-1”，但不能匹配“/products/abc-1”，这样可以设计更加严格的规则。
-																											<arg-type>参数类型</arg-type>
-																									</replaced-method>
-		(2)基于注解
+		1.普通URL路径映射
+		@RequestMapping(value={"/test1", "/user/create"}) 多个url路径可以映射到一个处理器
+		2.URI模板模式映射
+		@RequestMapping(value="/users/{userId}")：{×××}占位符， 请求的URL可以是 “/users/123456”
+		3.Ant风格
+		@RequestMapping(value="/users/**")：可以匹配“/users/abc/abc”，但“/users/123”将会被【URI模板模式映射中的“/users/{userId}”模式优先映射到】
+		@RequestMapping(value="/product?") "/product"
+		4.正则表达式风格
+		@RequestMapping(value="/products/{categoryCode:\\d+}-{pageNumber:\\d+}")：可以匹配“/products/123-1”，但不能匹配“/products/abc-1”，这样可以设计更加严格的规则。
+
+	请求参数数据映射限定
+		1.请求数据中有指定参数名
+		@RequestMapping(params="create", method=RequestMethod.GET) http://xxx/parameter1?create
+		2.请求数据中没有指定参数名
+		@RequestMapping(params="!create", method=RequestMethod.GET) 请求中没有"create"参数名 http://xxx/parameter1?abc
+		3.请求数据中指定参数名=值
+		@RequestMapping(params="submitFlag=create", method=RequestMethod.GET) 请求中有"submitFlag=create"请求参数 http://×××/parameter2?submitFlag=create
+		4.请求数据中指定参数名！=值
+		@RequestMapping(params="submitFlag!=create", method=...)
+	请求头数据映射限定
+		1.请求头数据中有指定参数名
+		@RequestMapping(value="/header/test1", headers="Accept") 表示请求的URL必须为"/header/test1"且请求头中必须有Accept参数才能匹配
+		2.请求头数据中没有指定参数名
+		@RequestMapping(value="/header/test1", headers="!abc")
+		3.请求头数据中指定参数名=值
+		@RequestMapping(value="/header/test3", headers = "Content-Type=application/json")
+		4.请求头数据中指定参数名！=值
+		@RequestMapping(value="/header/test7", headers = "Accept!=text/vnd.wap.wml")
+		5.组合使用是“且”的关系
+		@RequestMapping(value="/header/test8", headers = {"Accept!=text/vnd.wap.wml", "abc=123"}) 表示请求的URL必须为“/header/test8” 且 请求头中必须有“Accept”参数但值不等于“text/vnd.wap.wml”且 请求中必须有参数“abc=123”即可匹配。
+6.6数据绑定
+	1.@RequestParam绑定单个请求的参数值。
+	用于将请求参数取数据映射到功能处理方法的参数上。
+	public String requestParam4(@RequestParam(value="username", required=false, defaultValue="zhang") String username)=======reqeustParam4?username=123
+	2.@PathVariable绑定URI模板变量值
+	用于将请求URL中的模板变量映射到功能处理方法的参数上。
+	@RequestMapping(value="/users/{userId}/topics/{topicId}")
+	public String test(@PathVariable(value="userId") int userId, @PathVariable(value="topicId") int topicId)
+	如请求的URL为控制器URL/users/123/topics/456"则自动将URL中模板变量{userId}和{topicId}绑定到通过@PathVariable注解的同名参数上，即入参后userId=123,topicId = 456。
+	3.CookieValue绑定Cookie数据值
+	用于将请求的Cookie数据映射到功能处理方法的参数上。
+	public String test(@CookeValue(value="JSESSIONID", defaultValue="") String sessionId)
+	4.@RequestHeader绑定请求头数据
+	用于将请求的头信息区数据映射到功能处理方法的参数上。
+	@RequestMapping(value="/header")
+	public String test(@RequestHeader("User-Agent") String userAgent, @RequestHeader(value="Accept") String[] accepts)
+	5.@ModelAttribute绑定请求参数到命令对象
+		1.绑定请求参数到命令对象
+		public String test1(@ModelAttribute("user") UserModel user)
+		将该绑定的命令对象以"user"未名城添加到模型对象中工视图页面展示使用。 ${user.username}
+		?username=zhang&workInfo.city=bj 自动绑定到user中的workInfo属性中city属性中。
+
+		@RequestMapping(value="/model2/{username}")
+		public String test2(@ModelAttribute("model") DataBinderTestModel model)
+
+		2.暴露表单引用对象为模型数据
+		@ModelAttribute("cityList")
+		public List<String> cityList() {
+			return Arrays.asList("北京", "山东")；
+		}
+
+		3.暴露@RequestMapping方法返回值为模型数据
+		public @ModelAttribute("user2") UserModel test3(@ModelAttrubute("user2") UserModel user)
+
+		4.匿名绑定命令参数
+6.7 @SessionAttributes绑定命令对象到session
+	
+	
+
+																										
